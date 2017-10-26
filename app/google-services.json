@@ -67,6 +67,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "593228056822-mvl2f5ldp3fvr0kbmsp6iltsc3m4pue4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shibuyaxpress.citasmedicasx",
+            "certificate_hash": "5ebab8b3f6a0e4ac94872e0a3e4eecb44d7f8959"
+          }
+        },
+        {
           "client_id": "593228056822-qp7monjoekq13iuihsorbgu5v0c6hqr9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
