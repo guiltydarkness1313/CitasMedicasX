@@ -1,8 +1,12 @@
 package com.shibuyaxpress.citasmedicasx;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +17,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +103,7 @@ public class MenuActivity extends AppCompatActivity
             case R.id.nav_settings:
                 break;
             case R.id.nav_logout:
+                CerrarSesion();
                 break;
         }
 
@@ -98,5 +111,49 @@ public class MenuActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    protected void CerrarSesion(){
+        final AlertDialog.Builder windows=new AlertDialog.Builder(this);
+        windows.setTitle("Cerrar Sesión");
+        windows.setMessage("¿Seguro desea salir de la aplicación?");
+        windows.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Auth.GoogleSignInApi.signOut(client).setResultCallback(new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+                        //..
+                        //Toast.makeText(getApplicationContext(),"Log out",Toast.LENGTH_LONG).show();
+                        Intent rocket=new Intent(getApplicationContext(),LoginActivity.class);
+                        startActivity(rocket);
+                        finish();
+                        overridePendingTransition(R.anim.animex_triad,R.anim.animex_four);
+                    }
+                });
+            }
+        });
+        windows.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //hacer nada
+
+            }
+        });
+
+        windows.show();
+
+    }
+
+    protected void onStart() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+                .requestEmail()
+                .build();
+        client = new GoogleApiClient.Builder(this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+        client.connect();
+        super.onStart();
     }
 }
