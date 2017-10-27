@@ -93,14 +93,19 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id){
             case R.id.nav_home:
+                getSupportActionBar().setTitle(R.string.Home);
                 break;
             case R.id.nav_dates:
+                getSupportActionBar().setTitle(R.string.medical_dates);
                 break;
             case R.id.nav_doctor:
+                getSupportActionBar().setTitle(R.string.doctor_list);
                 break;
             case R.id.nav_message:
+                getSupportActionBar().setTitle(R.string.messages);
                 break;
             case R.id.nav_settings:
+                getSupportActionBar().setTitle(R.string.settings);
                 break;
             case R.id.nav_logout:
                 CerrarSesion();
