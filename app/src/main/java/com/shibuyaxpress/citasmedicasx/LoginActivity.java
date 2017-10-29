@@ -113,15 +113,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onBackPressed() {
         AlertDialog.Builder bob=new AlertDialog.Builder(this);
-        bob.setTitle("Tecsup EB");
-        bob.setMessage("¿Desea salir de la aplicación?");
-        bob.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+        bob.setTitle(R.string.app_name);
+        bob.setMessage(R.string.question_exit);
+        bob.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        bob.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        bob.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -195,18 +195,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 UIDgo=account.getId();
                 imagenperfil= String.valueOf(account.getPhotoUrl());
                 //desde que se obtienen los datos de cada usuario en firebase
+
                 launcher=new Intent(LoginActivity.this,MenuActivity.class);
+
+                //usar shared preferences aqui
                 launcher.putExtra("nombre",mFullName);
                 launcher.putExtra("imagen",imagenperfil);
                 launcher.putExtra("email",mEmail);
-                boolean found;
-                String domain = "tecsup.edu.pe";
-                //se verifica si la cuenta posee el dominio de TECSUP
-                found = mEmail.contains(domain);
-                //inicio de validacion
-                //if (found == true) {
+
                 firebaseAuthWithGoogle(account);
-                // }
             }
         } else {
             Toast.makeText(this, "no es un usuario valido", Toast.LENGTH_SHORT).show();
@@ -214,23 +211,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     }
 
-    public void verificarDominio(View view){
-        AnalizarCuenta();
-    }
-
-    protected void AnalizarCuenta(){
-        String correo=txtEmail.getText().toString();
-        String password=txtPassword.getText().toString();
-        boolean found;
-        String dominio="@tecsup.edu.pe";
-        found=correo.contains(dominio);
-        if(found){
-            Intent launcher=new Intent(this,MenuActivity.class);
-            startActivity(launcher);
-        }else{
-            Toast.makeText(this,"Acceso denegado",Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGooogle:" + acct.getId());

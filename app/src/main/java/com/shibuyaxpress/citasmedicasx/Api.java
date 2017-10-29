@@ -11,6 +11,11 @@ import retrofit2.http.Query;
  */
 
 public interface Api {
+    //obtener los datos de un usuario registrado en caso de existir
     @GET("val.php")
     Call<List<Usuarios>> authenticate(@Query("usu") String username, @Query("pass") String password);
+
+    //obtener la información de los medicos para almacenarlos es un List
+    @GET("api/v1/medicos")
+    Call<List<Medicos>>getMedicos();
 }

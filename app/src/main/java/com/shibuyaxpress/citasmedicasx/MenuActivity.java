@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -34,15 +36,6 @@ public class MenuActivity extends AppCompatActivity
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -161,4 +154,54 @@ public class MenuActivity extends AppCompatActivity
         client.connect();
         super.onStart();
     }
+
+    private void mostrarPantallaSelect(int item){
+        //control de fragments
+        //creacion de fragments
+        Fragment fragment=null;
+
+        //iniciar los fragmentos
+        switch (item){
+            case R.id.nav_home:
+                fragment=new HomeFragment();
+                break;
+            case R.id.nav_dates:
+                fragment=new DatesFragment();
+                break;
+            case R.id.nav_doctor:
+                fragment=new DoctorListFragment();
+            case R.id.nav_logout:
+                final AlertDialog.Builder windows=new AlertDialog.Builder(this);
+                windows.setTitle("Cerrar Sesión");
+                windows.setMessage("¿Seguro desea salir de la aplicación?");
+                windows.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                windows.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //hacer nada
+
+                    }
+                });
+
+                windows.show();
+
+
+        }
+
+        //remplazo de fragmentos
+        if(fragment!=null){
+            FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.content_frame,fragment);
+            ft.commit();
+        }
+
+        DrawerLayout drawer=(DrawerLayout)findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+    }
+
 }
