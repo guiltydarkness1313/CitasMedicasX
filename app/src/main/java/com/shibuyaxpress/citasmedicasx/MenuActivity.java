@@ -45,6 +45,8 @@ public class MenuActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //fragment por defecto
+        mostrarPantallaSelect(R.id.nav_home);
     }
 
     @Override
@@ -84,30 +86,7 @@ public class MenuActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        switch (id){
-            case R.id.nav_home:
-                getSupportActionBar().setTitle(R.string.Home);
-                break;
-            case R.id.nav_dates:
-                getSupportActionBar().setTitle(R.string.medical_dates);
-                break;
-            case R.id.nav_doctor:
-                getSupportActionBar().setTitle(R.string.doctor_list);
-                break;
-            case R.id.nav_message:
-                getSupportActionBar().setTitle(R.string.messages);
-                break;
-            case R.id.nav_settings:
-                getSupportActionBar().setTitle(R.string.settings);
-                break;
-            case R.id.nav_logout:
-                CerrarSesion();
-                break;
-        }
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mostrarPantallaSelect(id);
         return true;
     }
 
@@ -163,34 +142,21 @@ public class MenuActivity extends AppCompatActivity
         //iniciar los fragmentos
         switch (item){
             case R.id.nav_home:
+                getSupportActionBar().setTitle(R.string.Home);
                 fragment=new HomeFragment();
+
                 break;
             case R.id.nav_dates:
+                getSupportActionBar().setTitle(R.string.medical_dates);
                 fragment=new DatesFragment();
                 break;
             case R.id.nav_doctor:
+                getSupportActionBar().setTitle(R.string.doctor_list);
                 fragment=new DoctorListFragment();
+                break;
             case R.id.nav_logout:
-                final AlertDialog.Builder windows=new AlertDialog.Builder(this);
-                windows.setTitle("Cerrar Sesión");
-                windows.setMessage("¿Seguro desea salir de la aplicación?");
-                windows.setPositiveButton("Salir", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-                windows.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //hacer nada
-
-                    }
-                });
-
-                windows.show();
-
-
+                CerrarSesion();
+                break;
         }
 
         //remplazo de fragmentos

@@ -214,6 +214,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGooogle:" + acct.getId());
+        //meter progressbar para demostrar carga
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Verificando cuenta");
+        pDialog.setCancelable(false);
+        pDialog.show();
+        //------------------------------------------------------------------------------------------------------------------//
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mfirebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -229,16 +236,20 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             Toast.makeText(LoginActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            //Toast.makeText(getApplicationContext(),"inicio de sesión exitoso",Toast.LENGTH_SHORT).show();
-                            //launcher=new Intent(login.this,home.class);
+                            //si el usuario le logea correctamente mandar a actividad home
                             startActivity(launcher);
                             Toast.makeText(getApplicationContext(),"Bienvenido "+launcher.getStringExtra("nombre"),Toast.LENGTH_SHORT).show();
                             finish();
                             overridePendingTransition(R.anim.animex_first,R.anim.animex_second);
                         }
+                        //--------------------------------------------------//
+                        pDialog.cancel();
+                        //-------------------------------------------------//
                     }
                 });
     }
+
+    //-------------------------Uso de Retrofit----------------------------//
     //validacion del login
     private Api getInterfaceService(){
         Retrofit retrofit= new Retrofit.Builder()
