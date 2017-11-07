@@ -29,7 +29,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.List;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private static final int RC_SIGN_IN=9001;
     //inicio de api de google por la parte cliente
     private GoogleApiClient clienteGoogle;
-    private SweetAlertDialog pDialog;
 
     public String mFullName,mEmail,imagenperfil;
     public String UIDgo;
@@ -75,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             public void onClick(View v) {
                 String username=txtUsername.getText().toString();
                 String password=txtPassword.getText().toString();
-                loginProcessRetro(username,password);
+                initializeLogin(username,password);
             }
         });
 
@@ -149,16 +147,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         switch (v.getId()) {
             case R.id.btnInicio:
                 signIn();
-                try {
-                    pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-                    pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-                    pDialog.setTitleText("Verificando cuenta");
-                    pDialog.setCancelable(false);
-                    pDialog.show();
-                }catch (Exception e1){
-                    Log.d("TRASPASO DE BOX","GG");
-                }
-                //pDialog.dismissWithAnimation();
+
                 break;
 
         }
@@ -215,11 +204,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGooogle:" + acct.getId());
         //meter progressbar para demostrar carga
-        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Verificando cuenta");
-        pDialog.setCancelable(false);
-        pDialog.show();
         //------------------------------------------------------------------------------------------------------------------//
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mfirebaseAuth.signInWithCredential(credential)
@@ -243,7 +227,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             overridePendingTransition(R.anim.animex_first,R.anim.animex_second);
                         }
                         //--------------------------------------------------//
-                        pDialog.cancel();
                         //-------------------------------------------------//
                     }
                 });
@@ -251,22 +234,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     //-------------------------Uso de Retrofit----------------------------//
     //validacion del login
-    private Api getInterfaceService(){
-        Retrofit retrofit= new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        final Api api=retrofit.create(Api.class);
-        return api;
-    }
-
-    private void loginProcessRetro(final String username, String password){
-        Api api=this.getInterfaceService();
-        Call<List<Usuarios>> mService = api.authenticate(username,password);
-        mService.enqueue(new Callback<List<Usuarios>>() {
+    private void initializeLogin(String username,String password){
+        ApiService service= ApiServiceGenerator.createService(ApiService.class);
+        Call<List<Usuarios>> call=service.authenticate(username,password);
+        call.enqueue(new Callback<List<Usuarios>>() {
             @Override
             public void onResponse(Call<List<Usuarios>> call, Response<List<Usuarios>> response) {
-
                 List<Usuarios> lista=response.body();
                 assert lista != null;
                 if (!lista.isEmpty()) {
@@ -280,7 +253,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
             @Override
             public void onFailure(Call<List<Usuarios>> call, Throwable t) {
-
                 Toast.makeText(getApplicationContext(),"no hay conexión",Toast.LENGTH_SHORT).show();
             }
         });

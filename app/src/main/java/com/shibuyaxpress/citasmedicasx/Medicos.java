@@ -11,6 +11,8 @@ public class Medicos {
     private String apellido_materno;
     private String tipo_doc_identidad;
     private String num_doc_identidad;
+    private String imagen_perfil;
+    private String especialidad;
     private String telefono;
     private String celular;
     private String hora_entrada;
@@ -21,13 +23,15 @@ public class Medicos {
     public Medicos() {
     }
 
-    public Medicos(String id, String nombre, String apellido_paterno, String apellido_materno, String tipo_doc_identidad, String num_doc_identidad, String telefono, String celular, String hora_entrada, String hora_salida, String genero, String usuario_id) {
+    public Medicos(String id, String nombre, String apellido_paterno, String apellido_materno, String tipo_doc_identidad, String num_doc_identidad,String imagen_perfil,String especialidad, String telefono, String celular, String hora_entrada, String hora_salida, String genero, String usuario_id) {
         this.id = id;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
         this.apellido_materno = apellido_materno;
         this.tipo_doc_identidad = tipo_doc_identidad;
         this.num_doc_identidad = num_doc_identidad;
+        this.imagen_perfil=imagen_perfil;
+        this.especialidad=especialidad;
         this.telefono = telefono;
         this.celular = celular;
         this.hora_entrada = hora_entrada;
@@ -130,5 +134,21 @@ public class Medicos {
 
     public void setUsuario_id(String usuario_id) {
         this.usuario_id = usuario_id;
+    }
+
+    public String getImagen_perfil() {
+        return imagen_perfil;
+    }
+
+    public void setImagen_perfil(String imagen_perfil) {
+        this.imagen_perfil = imagen_perfil;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 }

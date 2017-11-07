@@ -57,5 +57,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-appinvite:11.4.2'
     //recyclerviewadapter
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.33'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    //super glide
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 }
 apply plugin: 'com.google.gms.google-services'
