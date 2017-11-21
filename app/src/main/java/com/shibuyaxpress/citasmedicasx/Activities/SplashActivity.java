@@ -1,10 +1,12 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.shibuyaxpress.citasmedicasx.R;
 
 public class SplashActivity extends AppCompatActivity {
 

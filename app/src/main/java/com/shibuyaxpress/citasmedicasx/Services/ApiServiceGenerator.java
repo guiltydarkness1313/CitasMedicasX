@@ -1,4 +1,4 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Services;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

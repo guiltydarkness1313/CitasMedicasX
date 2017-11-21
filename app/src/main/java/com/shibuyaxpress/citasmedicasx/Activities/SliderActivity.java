@@ -1,4 +1,4 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

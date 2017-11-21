@@ -1,4 +1,4 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Models;
 
 /**
  * Created by paulf on 24-Oct-17.

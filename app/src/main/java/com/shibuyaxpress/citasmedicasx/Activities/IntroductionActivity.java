@@ -1,4 +1,4 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
 import com.github.paolorotolo.appintro.AppIntro2;
+import com.shibuyaxpress.citasmedicasx.R;
 
 public class IntroductionActivity extends AppIntro2 {
 

@@ -7,8 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.shibuyaxpress.citasmedicasx.Services.ApiService;
 import com.shibuyaxpress.citasmedicasx.Holders.DoctorHolder;
-import com.shibuyaxpress.citasmedicasx.Medicos;
+import com.shibuyaxpress.citasmedicasx.Models.Medicos;
 import com.shibuyaxpress.citasmedicasx.R;
 
 import java.util.ArrayList;
@@ -45,7 +46,8 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorHolder>{
         holder.nombre.setText(lista.get(position).getNombre());
         holder.apellido.setText(lista.get(position).getApellido_paterno());
         holder.especialidad.setText(lista.get(position).getEspecialidad());
-        Glide.with(context).load(lista.get(position).getImagen_perfil()).into(holder.perfil);
+        String link= ApiService.API_BASE_URL+"/images/"+lista.get(position).getImagen_perfil();
+        Glide.with(context).load(link).into(holder.perfil);
     }
 
     @Override

@@ -1,8 +1,7 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Fragments;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.shibuyaxpress.citasmedicasx.Adapters.DoctorAdapter;
+import com.shibuyaxpress.citasmedicasx.Services.ApiService;
+import com.shibuyaxpress.citasmedicasx.Services.ApiServiceGenerator;
+import com.shibuyaxpress.citasmedicasx.Models.Medicos;
+import com.shibuyaxpress.citasmedicasx.R;
 
 import java.util.List;
 
@@ -50,7 +53,7 @@ public class DoctorListFragment extends Fragment {
     }
 
     private void getDoctorList(){
-        ApiService service=ApiServiceGenerator.createService(ApiService.class);
+        ApiService service= ApiServiceGenerator.createService(ApiService.class);
         Call<List<Medicos>> call=service.getMedicos();
 
         call.enqueue(new Callback<List<Medicos>>() {

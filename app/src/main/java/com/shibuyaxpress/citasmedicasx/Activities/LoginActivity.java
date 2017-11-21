@@ -1,8 +1,7 @@
-package com.shibuyaxpress.citasmedicasx;
+package com.shibuyaxpress.citasmedicasx.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,14 +25,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import java.util.List;
+import com.shibuyaxpress.citasmedicasx.Models.Usuarios;
+import com.shibuyaxpress.citasmedicasx.R;
+import com.shibuyaxpress.citasmedicasx.Services.ApiService;
+import com.shibuyaxpress.citasmedicasx.Services.ApiServiceGenerator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
 
@@ -236,13 +235,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     //validacion del login
     private void initializeLogin(String username,String password){
         ApiService service= ApiServiceGenerator.createService(ApiService.class);
-        Call<List<Usuarios>> call=service.authenticate(username,password);
-        call.enqueue(new Callback<List<Usuarios>>() {
+        Call<Usuarios> call=service.Login(username,password);
+        call.enqueue(new Callback<Usuarios>() {
             @Override
-            public void onResponse(Call<List<Usuarios>> call, Response<List<Usuarios>> response) {
-                List<Usuarios> lista=response.body();
+            public void onResponse(Call<Usuarios> call, Response<Usuarios> response) {
+                Usuarios lista=response.body();
                 assert lista != null;
-                if (!lista.isEmpty()) {
+                if (response.isSuccessful()) {
                     launcher=new Intent(LoginActivity.this,MenuActivity.class);
                     startActivity(launcher);
                     Toast.makeText(getApplicationContext(),"exito",Toast.LENGTH_SHORT).show();
@@ -252,9 +251,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
 
             @Override
-            public void onFailure(Call<List<Usuarios>> call, Throwable t) {
+            public void onFailure(Call<Usuarios> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"no hay conexión",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void RegisterUser(View view){
+        Intent launcher=new Intent(this,RegisterUserActivity.class);
+        startActivity(launcher);
     }
 }
