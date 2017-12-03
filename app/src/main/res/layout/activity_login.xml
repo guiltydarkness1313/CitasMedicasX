@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sky_blue"
+    android:background="@drawable/bg_login_plus"
     android:orientation="vertical"
-    tools:context="com.shibuyaxpress.citasmedicasx.Activities.LoginActivity">
+    tools:context="com.shibuyaxpress.citasmedicasx.activities.LoginActivity">
 
 
-    <ImageView
-        android:layout_margin="20dp"
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+    <!--<ImageView
+        android:id="@+id/logo"
+        android:layout_margin="2dp"
+        android:layout_width="186dp"
+        android:layout_height="186dp"
         android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo_app" />-->
 
 
     <LinearLayout
-        android:layout_below="@id/imageView"
+
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:id="@+id/formulario"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

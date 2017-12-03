@@ -31,4 +31,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_user_register">Registrarse ahora</string>
     <string name="title_register_user_activity">Registro de nuevo usuario</string>
+    <string name="nombres_input">Nombres</string>
+    <string-array name="type_documents">
+        <item>DNI</item>
+        <item>CE</item>
+        <item>Pasaporte</item>
+    </string-array>
+    <string-array name="type_sex">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
 </resources>

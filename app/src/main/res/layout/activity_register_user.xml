@@ -4,22 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shibuyaxpress.citasmedicasx.Activities.RegisterUserActivity">
+    tools:context="com.shibuyaxpress.citasmedicasx.activities.RegisterUserActivity">
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardtitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/saku"
-            android:text="@string/title_register_user_activity"
-            android:textSize="24sp" />
+            app:cardBackgroundColor="@color/colorPrimaryDark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/aokana"
+                    android:text="@string/title_register_user_activity"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <LinearLayout
             android:id="@+id/form_2"
-            android:layout_below="@id/textView10"
+            android:layout_below="@id/cardtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -30,69 +51,405 @@
                 android:layout_height="match_parent" >
 
                 <LinearLayout
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        app:srcCompat="@android:drawable/ic_menu_gallery" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_margin="10dp"
+                        android:id="@+id/profile_image"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_gravity="center"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="2dp"
+                        android:src="@drawable/ic_person_black_24dp" />
 
-                    <EditText
-                        android:id="@+id/editText"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="Nombres"
-                        android:inputType="textPersonName" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/editText2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nombres_input" />
 
-                    <EditText
-                        android:id="@+id/editText3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/input_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:ems="10"
+                            android:hint="Ej. Eduardo"
+                            android:inputType="textPersonName"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:singleLine="true" />
 
-                    <EditText
-                        android:id="@+id/editText4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="number" />
+                    </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/editText5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="date" />
 
-                    <EditText
-                        android:id="@+id/editText6"
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textEmailAddress" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/editText7"
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apellido \nPaterno" />
+
+                        <EditText
+                            android:id="@+id/editText3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:layout_marginStart="10dp"
+                            android:ems="10"
+                            android:hint="Ej. Garcia"
+                            android:inputType="textPersonName"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="phone" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apellido\nMaterno" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/input_last_name_matern"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:ems="10"
+                            android:hint="Ej. Minaya"
+                            android:inputType="textPersonName"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fecha de\nNacimiento" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/inputBirthDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:editable="false"
+                            android:ems="10"
+                            android:hint="Ej. 13/07/1997"
+                            android:inputType="date"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tipo de\nDocumento" />
+
+                        <Spinner
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/spinner_type_doc"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:entries="@array/type_documents" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Número de\nDocumento" />
+
+                        <EditText
+                            android:id="@+id/editText5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:layout_marginStart="10dp"
+                            android:ems="10"
+                            android:hint="Ej. 46876160"
+                            android:inputType="date"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nacionalidad" />
+
+                        <EditText
+                            android:id="@+id/editText6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:ems="10"
+                            android:layout_marginStart="10dp"
+                            android:hint="Ej. chilena"
+                            android:inputType="textEmailAddress"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dirección" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/editText7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:ems="10"
+                            android:hint="Ej. Las casuerinas 331"
+                            android:inputType="phone"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Código\Postal" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/editText8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:ems="10"
+                            android:hint="Ej. Lima 31"
+                            android:inputType="textPersonName"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:singleLine="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ciudad" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/input_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rounded"
+                            android:ems="10"
+                            android:hint="Ciudad"
+                            android:inputType="textPersonName"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Provincia" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/editText10"
+                            android:background="@drawable/bg_rounded"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:hint="Provincia"
+                            android:inputType="textPersonName"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView22"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Telefono" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/editText11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:background="@drawable/bg_rounded"
+                            android:hint="telefono"
+                            android:inputType="phone"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Celular" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/editText12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:background="@drawable/bg_rounded"
+                            android:hint="celular"
+                            android:inputType="phone"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Correo" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/editText13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:background="@drawable/bg_rounded"
+                            android:hint="correo"
+                            android:inputType="textEmailAddress"
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sexo" />
+
+                        <Spinner
+                            android:id="@+id/spinner_sex"
+                            android:layout_width="match_parent"
+                            android:popupBackground="@color/colorAccent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_weight="1"
+                            android:entries="@array/type_sex" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="siguiente"
+                android:text="Siguiente" />
 
         </LinearLayout>
 
