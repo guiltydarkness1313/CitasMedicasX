@@ -34,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener{
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener/*, View.OnClickListener*/{
 
     private Button inicio,btnLogin;
     private EditText txtEmail,txtUsername,txtPassword;
@@ -60,8 +60,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        inicio=findViewById(R.id.btnInicio);
-        inicio.setOnClickListener(this);
+        //inicio=findViewById(R.id.btnInicio);
+       // inicio.setOnClickListener(this);
         //formulario
         txtUsername=findViewById(R.id.txtUser);
         txtPassword=findViewById(R.id.txtPassword);
@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
-    @Override
+   /* @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnInicio:
@@ -150,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 break;
 
         }
-    }
+    }*/
 
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(clienteGoogle);

@@ -6,20 +6,29 @@ package com.shibuyaxpress.citasmedicasx.models;
 
 public class Usuarios {
     private String id;
-    private String nombre;
-    private String clave;
-    private String tipo;
-    private String registro_fecha;
+    private String username;
+    private String password;
+    private String type;
+    private String reg_date;
 
-    public Usuarios() {
+    private static Usuarios _INSTANCE=null;
+
+    public static Usuarios getInstance() {
+        if(_INSTANCE==null){
+            _INSTANCE=new Usuarios();
+        }
+        return _INSTANCE;
     }
 
-    public Usuarios(String id, String nombre, String clave, String tipo, String registro_fecha) {
+    private Usuarios() {
+    }
+
+    public Usuarios(String id, String username, String password, String type, String reg_date) {
         this.id = id;
-        this.nombre = nombre;
-        this.clave = clave;
-        this.tipo = tipo;
-        this.registro_fecha = registro_fecha;
+        this.username = username;
+        this.password = password;
+        this.type = type;
+        this.reg_date = reg_date;
     }
 
     public String getId() {
@@ -31,34 +40,34 @@ public class Usuarios {
     }
 
     public String getNombre() {
-        return nombre;
+        return username;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String username) {
+        this.username = username;
     }
 
     public String getClave() {
-        return clave;
+        return password;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setClave(String password) {
+        this.password = password;
     }
 
     public String getTipo() {
-        return tipo;
+        return type;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String type) {
+        this.type = type;
     }
 
     public String getRegistro_fecha() {
-        return registro_fecha;
+        return reg_date;
     }
 
-    public void setRegistro_fecha(String registro_fecha) {
-        this.registro_fecha = registro_fecha;
+    public void setRegistro_fecha(String reg_date) {
+        this.reg_date = reg_date;
     }
 }

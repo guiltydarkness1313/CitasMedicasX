@@ -19,11 +19,11 @@
 
 
     <LinearLayout
-
+        android:padding="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:id="@+id/formulario"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="250dp"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_rounded"
+            android:background="@drawable/et_marco_login"
             android:drawableStart="@drawable/ic_person_black_24dp"
             android:hint="@string/user_txt"
             android:inputType="textEmailAddress"
@@ -48,7 +48,7 @@
             android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:background="@drawable/bg_rounded"
+            android:background="@drawable/et_marco_login"
             android:drawableStart="@drawable/ic_lock_black_24dp"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -57,10 +57,11 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
             android:text="Iniciar Sesión" />
 
         <TextView
@@ -69,40 +70,42 @@
             android:layout_marginTop="10dp"
             android:text="@string/new_user"
             android:textAlignment="center"
+            android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
-            android:text="@string/new_user_register"
-            android:onClick="RegisterUser"/>
+            android:onClick="RegisterUser"
+            android:text="@string/new_user_register" />
 
     </LinearLayout>
+    <!--
+        <TextView
+            android:layout_above="@id/btnInicio"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/text_cuenta_google"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_above="@id/btnInicio"
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/text_cuenta_google"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/common_google_signin_btn_text_light_normal"
-        android:text="@string/txt_log_in"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        <Button
+            android:id="@+id/btnInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/common_google_signin_btn_text_light_normal"
+            android:text="@string/txt_log_in"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>-->
 
 </RelativeLayout>
