@@ -5,12 +5,12 @@ package com.shibuyaxpress.citasmedicasx.models;
  */
 
 public class Pacientes {
-    private int id;
+    private String id;
     private String nombre;
     private String apellido_paterno;
     private String apellido_materno;
     private String tipo_doc;
-    private int num_doc;
+    private String num_doc;
     private String fecha_nacimiento;
     private String nacionalidad;
     private String imagen_perfil;
@@ -18,11 +18,12 @@ public class Pacientes {
     private String cod_postal;
     private String ciudad;
     private String provincia;
-    private int telefono;
-    private int celular;
+    private String telefono;
+    private String celular;
     private String correo;
     private String genero;
-    private int usuario_id;
+    private String usuario_id;
+    private Citas[] citas;
 
     private static Pacientes _INSTANCE=null;
 
@@ -37,7 +38,7 @@ public class Pacientes {
     }
 
 
-    public Pacientes(int id, String nombre, String apellido_paterno, String apellido_materno, String tipo_doc, int num_doc, String fecha_nacimiento, String nacionalidad, String imagen_perfil, String direccion, String cod_postal, String ciudad, String provincia, int telefono, int celular, String correo, String genero, int usuario_id) {
+    public Pacientes(String id, String nombre, String apellido_paterno, String apellido_materno, String tipo_doc, String num_doc, String fecha_nacimiento, String nacionalidad, String imagen_perfil, String direccion, String cod_postal, String ciudad, String provincia, String telefono, String celular, String correo, String genero, String usuario_id, Citas[] citas) {
         this.id = id;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -56,13 +57,14 @@ public class Pacientes {
         this.correo = correo;
         this.genero = genero;
         this.usuario_id = usuario_id;
+        this.citas = citas;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -98,11 +100,11 @@ public class Pacientes {
         this.tipo_doc = tipo_doc;
     }
 
-    public int getNum_doc() {
+    public String getNum_doc() {
         return num_doc;
     }
 
-    public void setNum_doc(int num_doc) {
+    public void setNum_doc(String num_doc) {
         this.num_doc = num_doc;
     }
 
@@ -162,19 +164,19 @@ public class Pacientes {
         this.provincia = provincia;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
@@ -194,11 +196,19 @@ public class Pacientes {
         this.genero = genero;
     }
 
-    public int getUsuario_id() {
+    public String getUsuario_id() {
         return usuario_id;
     }
 
-    public void setUsuario_id(int usuario_id) {
+    public void setUsuario_id(String usuario_id) {
         this.usuario_id = usuario_id;
+    }
+
+    public Citas[] getCitas() {
+        return citas;
+    }
+
+    public void setCitas(Citas[] citas) {
+        this.citas = citas;
     }
 }

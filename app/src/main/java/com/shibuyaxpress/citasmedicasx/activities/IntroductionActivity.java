@@ -21,6 +21,8 @@ public class IntroductionActivity extends AppIntro2 {
     @Override
     public void onSkipPressed(Fragment currentFragment) {
         super.onSkipPressed(currentFragment);
+        Intent launcher=new Intent(this,LoginActivity.class);
+        startActivity(launcher);
         finish();
     }
 

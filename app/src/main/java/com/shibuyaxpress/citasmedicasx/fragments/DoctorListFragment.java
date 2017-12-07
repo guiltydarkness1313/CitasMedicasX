@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jetradar.desertplaceholder.DesertPlaceholder;
 import com.shibuyaxpress.citasmedicasx.adapters.DoctorAdapter;
 import com.shibuyaxpress.citasmedicasx.services.ApiService;
 import com.shibuyaxpress.citasmedicasx.services.ApiServiceGenerator;
@@ -33,7 +34,7 @@ public class DoctorListFragment extends Fragment {
     private RecyclerView doctorRecycler;
     private DoctorAdapter adapter;
     private LinearLayoutManager manager;
-
+    private DesertPlaceholder desertPlaceholder;
 
     public DoctorListFragment() {
         // Required empty public constructor
@@ -44,6 +45,7 @@ public class DoctorListFragment extends Fragment {
                              Bundle savedInstanceState) {
        final View v=inflater.inflate(R.layout.fragment_doctor_list, container, false);
         // Inflate the layout for this fragment
+        desertPlaceholder=v.findViewById(R.id.placeholder);
         doctorRecycler=v.findViewById(R.id.recicler_doctor);
         manager=new LinearLayoutManager(getContext());
         doctorRecycler.setLayoutManager(manager);
@@ -89,8 +91,14 @@ public class DoctorListFragment extends Fragment {
             @Override
             public void onFailure(Call<List<Medicos>> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.toString());
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                DoctorAdapter doc=(DoctorAdapter)doctorRecycler.getAdapter();
+                desertPlaceholder.setVisibility(View.VISIBLE);
+                if(doc.getLista().isEmpty()){
+                    desertPlaceholder.setVisibility(View.VISIBLE);
+                }else{
+                    desertPlaceholder.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }

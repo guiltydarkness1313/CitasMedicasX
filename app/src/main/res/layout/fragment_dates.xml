@@ -2,13 +2,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.shibuyaxpress.citasmedicasx.fragments.DatesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.jetradar.desertplaceholder.DesertPlaceholder
+        android:id="@+id/placeholder_dates"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="citas medicas"
-        android:textAlignment="center" />
+        android:visibility="gone"
+        app:dp_buttonText="reintentar"
+        app:dp_message="Al parecer no hay datos o no hay conexión a internet"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reciclador_citas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_cita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        android:clickable="true"
+        android:src="@drawable/ic_add" />
 </FrameLayout>

@@ -30,6 +30,7 @@ import com.shibuyaxpress.citasmedicasx.R;
 import com.shibuyaxpress.citasmedicasx.services.ApiService;
 import com.shibuyaxpress.citasmedicasx.services.ApiServiceGenerator;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,6 +60,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_login);
         //inicio=findViewById(R.id.btnInicio);
        // inicio.setOnClickListener(this);
@@ -245,6 +248,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     launcher=new Intent(LoginActivity.this,MenuActivity.class);
                     startActivity(launcher);
                     Toast.makeText(getApplicationContext(),"exito",Toast.LENGTH_SHORT).show();
+                    Usuarios u=response.body();
+                    Usuarios.getInstance().setId(u.getId());
+                    Usuarios.getInstance().setTipo(u.getTipo());
+                    Usuarios.getInstance().setRegistro_fecha(u.getRegistro_fecha());
+                    Usuarios.getInstance().setClave(u.getClave());
+                    Usuarios.getInstance().setNombre(u.getNombre());
                 } else {
                     Toast.makeText(getApplicationContext(),"error en datos",Toast.LENGTH_SHORT).show();
                 }

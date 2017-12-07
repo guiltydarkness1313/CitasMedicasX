@@ -1,8 +1,11 @@
 package com.shibuyaxpress.citasmedicasx.services;
 
 import com.shibuyaxpress.citasmedicasx.activities.RegisterUserActivity;
+import com.shibuyaxpress.citasmedicasx.models.Citas;
 import com.shibuyaxpress.citasmedicasx.models.Medicos;
+import com.shibuyaxpress.citasmedicasx.models.Pacientes;
 import com.shibuyaxpress.citasmedicasx.models.ResponseMessage;
+import com.shibuyaxpress.citasmedicasx.models.ResponsePatient;
 import com.shibuyaxpress.citasmedicasx.models.ResponseUser;
 import com.shibuyaxpress.citasmedicasx.models.Usuarios;
 
@@ -17,6 +20,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 /**
  * Created by paulf on 24-Oct-17.
@@ -42,18 +46,18 @@ public interface ApiService {
                     @Field("apellido_paterno")String ap_paterno,
                     @Field("apellido_materno")String ap_materno,
                     @Field("tipo_doc") String tipo_doc,
-                    @Field("num_doc") int num_doc,
+                    @Field("num_doc") String num_doc,
                     @Field("fecha_nacimiento") String fecha_nac,
                     @Field("nacionalidad") String nacionalidad,
                     @Field("direccion") String direccion,
                     @Field("cod_postal") String cod_postal,
                     @Field("ciudad") String ciudad,
                     @Field("provincia") String provincia,
-                    @Field("telefono") int telefono,
-                    @Field("celular") int celular,
+                    @Field("telefono") String telefono,
+                    @Field("celular") String celular,
                     @Field("correo") String correo,
                     @Field("genero") String genero,
-                    @Field("usuario_id") int usuario_id
+                    @Field("usuario_id") String usuario_id
             );
 
     @Multipart
@@ -88,5 +92,20 @@ public interface ApiService {
             @Field("reg_date")  String reg_date
             );
 
+        @GET("mis-citas/{id}")
+    Call<Pacientes> dateByPatient(@Path("id") Integer id);
 
+        @GET("buscar/{id}")
+    Call<ResponsePatient>searchUser(@Path("id") Integer id);
+
+        @GET("api/v1/medicos/{id}")
+    Call<Medicos>searchDoctor(@Path("id")Integer id);
+
+        @FormUrlEncoded
+        @POST("api/v1/citas")
+    Call<Citas>createDatewithDoctor(
+            @Field("fecha") String fecha,
+            @Field("descripcion") String descripcion,
+            @Field("medico_id")String medico_id,
+            @Field("paciente_id")String paciente_id);
 }

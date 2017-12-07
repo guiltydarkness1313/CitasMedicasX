@@ -2,17 +2,22 @@ package com.shibuyaxpress.citasmedicasx.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.shibuyaxpress.citasmedicasx.R;
 import com.shibuyaxpress.citasmedicasx.models.Pacientes;
 import com.shibuyaxpress.citasmedicasx.models.Usuarios;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -106,17 +111,17 @@ public class RegisterUserActivity extends AppCompatActivity {
         Pacientes.getInstance().setNombre(inputName.getText().toString());
         Pacientes.getInstance().setApellido_paterno(inputLastNameP.getText().toString());
         Pacientes.getInstance().setApellido_materno(inputLastNameM.getText().toString());
-        Pacientes.getInstance().setCelular(Integer.parseInt(inputCell.getText().toString()));
+        Pacientes.getInstance().setCelular(inputCell.getText().toString());
         Pacientes.getInstance().setCiudad(inputCity.getText().toString());
         Pacientes.getInstance().setProvincia(inputProvince.getText().toString());
         Pacientes.getInstance().setCod_postal(inputPostalCode.getText().toString());
         Pacientes.getInstance().setCorreo(inputEmail.getText().toString());
         Pacientes.getInstance().setDireccion(inputDirection.getText().toString());
-        Pacientes.getInstance().setTelefono(Integer.parseInt(inputTelephone.getText().toString()));
+        Pacientes.getInstance().setTelefono(inputTelephone.getText().toString());
         Pacientes.getInstance().setFecha_nacimiento(fecha_nacimiento);
         Pacientes.getInstance().setGenero(spinnerSex.getSelectedItem().toString());
         Pacientes.getInstance().setTipo_doc(spinnerTypeDoc.getSelectedItem().toString());
-        Pacientes.getInstance().setNum_doc(Integer.parseInt(inputNumberDoc.getText().toString()));
+        Pacientes.getInstance().setNum_doc(inputNumberDoc.getText().toString());
         Pacientes.getInstance().setNacionalidad(inputNationality.getText().toString());
         //ingresar el usuario_id
         //Pacientes.getInstance().setUsuario_id(1);
@@ -126,8 +131,36 @@ public class RegisterUserActivity extends AppCompatActivity {
     }
 
     public void siguiente(View view){
-        getDatafromInput();
-        Intent launcher= new Intent(RegisterUserActivity.this, UserPasswordActivity.class);
-        startActivity(launcher);
+
+        String nombre=inputName.getText().toString();
+        String apellidoP=inputLastNameP.getText().toString();
+        String apellidoM=inputLastNameM.getText().toString();
+        String ciudad=inputCity.getText().toString();
+        String provincia=inputProvince.getText().toString();
+        String codPostal=inputPostalCode.getText().toString();
+        String tipoDoc=spinnerTypeDoc.getSelectedItem().toString();
+        String genero=spinnerSex.getSelectedItem().toString();
+        String celular=inputCell.getText().toString();
+        String telefono=inputTelephone.getText().toString();
+        String nacionalidad=inputNationality.getText().toString();
+        String correo=inputEmail.getText().toString();
+        String direccion=inputDirection.getText().toString();
+        String fechaNac=inputDate.getText().toString();
+        String numDoc=inputNumberDoc.getText().toString();
+
+        if(TextUtils.isEmpty(nombre)||TextUtils.isEmpty(apellidoM)||
+                TextUtils.isEmpty(apellidoP)||TextUtils.isEmpty(ciudad)||
+                TextUtils.isEmpty(provincia)|| TextUtils.isEmpty(codPostal)
+                ||TextUtils.isEmpty(tipoDoc)||TextUtils.isEmpty(genero)||
+                TextUtils.isEmpty(celular)||TextUtils.isEmpty(telefono)
+                ||TextUtils.isEmpty(nacionalidad)||TextUtils.isEmpty(numDoc)
+               ||TextUtils.isEmpty(fechaNac)||TextUtils.isEmpty(correo)
+                ||TextUtils.isEmpty(direccion)){
+            Toast.makeText(RegisterUserActivity.this,"Complete campos necesarios",Toast.LENGTH_SHORT).show();
+        }else {
+            getDatafromInput();
+            Intent launcher = new Intent(RegisterUserActivity.this, UserPasswordActivity.class);
+            startActivity(launcher);
+        }
     }
 }

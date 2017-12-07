@@ -79,7 +79,7 @@ public class UserPasswordActivity extends AppCompatActivity {
                         ResponseUser u= response.body();
                         //assert u != null;
                         Log.d(TAG,"el id del prro es:"+u.getData().getId());
-                        Pacientes.getInstance().setUsuario_id(Integer.parseInt(u.getData().getId()));
+                        Pacientes.getInstance().setUsuario_id(u.getData().getId());
                     }
                 }
 
@@ -92,18 +92,18 @@ public class UserPasswordActivity extends AppCompatActivity {
             String ap_paterno=Pacientes.getInstance().getApellido_paterno();
             String ap_materno=Pacientes.getInstance().getApellido_materno();
             String tipo_doc=Pacientes.getInstance().getTipo_doc();
-            int num_doc=Pacientes.getInstance().getNum_doc();
+            String num_doc=Pacientes.getInstance().getNum_doc();
             String fechaNac=Pacientes.getInstance().getFecha_nacimiento();
             String nacionalidad=Pacientes.getInstance().getNacionalidad();
             String direccion=Pacientes.getInstance().getDireccion();
             String postal=Pacientes.getInstance().getCod_postal();
             String ciudad=Pacientes.getInstance().getCiudad();
             String provincia=Pacientes.getInstance().getProvincia();
-            int telefono=Pacientes.getInstance().getTelefono();
-            int celular=Pacientes.getInstance().getCelular();
+            String telefono=Pacientes.getInstance().getTelefono();
+            String celular=Pacientes.getInstance().getCelular();
             String correo=Pacientes.getInstance().getCorreo();
             String genero=Pacientes.getInstance().getGenero();
-            int usuarioId=Pacientes.getInstance().getUsuario_id();
+            String usuarioId=Pacientes.getInstance().getUsuario_id();
 
             if(!String.valueOf(usuarioId).isEmpty()){
                 ApiService service2=ApiServiceGenerator.createService(ApiService.class);

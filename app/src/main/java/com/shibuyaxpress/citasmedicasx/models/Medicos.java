@@ -11,6 +11,7 @@ public class Medicos {
     private String apellido_materno;
     private String tipo_doc_identidad;
     private String num_doc_identidad;
+    private String fecha_nacimiento;
     private String imagen_perfil;
     private String especialidad;
     private String telefono;
@@ -19,11 +20,29 @@ public class Medicos {
     private String hora_salida;
     private String genero;
     private String usuario_id;
-
-    public Medicos() {
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    public Medicos(String id, String nombre, String apellido_paterno, String apellido_materno, String tipo_doc_identidad, String num_doc_identidad,String imagen_perfil,String especialidad, String telefono, String celular, String hora_entrada, String hora_salida, String genero, String usuario_id) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    private static Medicos _INSTANCE=null;
+
+    public static Medicos getInstance(){
+        if(_INSTANCE==null){
+            _INSTANCE=new Medicos();
+        }
+        return _INSTANCE;
+    }
+
+
+
+    private Medicos() {
+    }
+
+    public Medicos(String id, String nombre, String apellido_paterno, String apellido_materno, String tipo_doc_identidad, String num_doc_identidad,String fecha_nacimiento,String imagen_perfil,String especialidad, String telefono, String celular, String hora_entrada, String hora_salida, String genero, String usuario_id) {
         this.id = id;
         this.nombre = nombre;
         this.apellido_paterno = apellido_paterno;
@@ -33,6 +52,7 @@ public class Medicos {
         this.imagen_perfil=imagen_perfil;
         this.especialidad=especialidad;
         this.telefono = telefono;
+        this.fecha_nacimiento=fecha_nacimiento;
         this.celular = celular;
         this.hora_entrada = hora_entrada;
         this.hora_salida = hora_salida;

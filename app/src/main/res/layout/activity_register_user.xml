@@ -261,7 +261,6 @@
                             android:background="@drawable/bg_rounded"
                             android:ems="10"
                             android:hint="Ej. Las casuerinas 331"
-                            android:inputType="phone"
                             android:paddingEnd="10dp"
                             android:paddingStart="10dp" />
                     </LinearLayout>
