@@ -76,7 +76,7 @@ public class FinalRegisterDateActivity extends AppCompatActivity implements Date
             @Override
             public void onClick(View view) {
                     String desc=description.getText().toString();
-                if(timer.isEmpty()||date.isEmpty()||desc.isEmpty()){
+                if(timer.isEmpty()||date.isEmpty()||desc.isEmpty()||desc.length()>100){
                     Toast.makeText(FinalRegisterDateActivity.this, "Nombre y Precio son campos requeridos", Toast.LENGTH_SHORT).show();
                     return;
                 }

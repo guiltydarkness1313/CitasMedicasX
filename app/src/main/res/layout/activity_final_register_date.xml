@@ -12,21 +12,25 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seleccione su doctor:" />
+        android:fontFamily="@font/aokana"
+        android:text="ingrese su descripción"
+        android:textSize="18sp" />
 
     <EditText
 
         android:id="@+id/input_descripcion_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="descripcion de su malestar" />
+        android:hint="descripción de su malestar" />
 
     <TextView
-        android:layout_marginTop="20dp"
         android:id="@+id/textView28"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Escoja una fecha" />
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/aokana"
+        android:text="Escoja una fecha"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/input_date_register"
@@ -39,7 +43,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Escoja el tiempo" />
+        android:fontFamily="@font/aokana"
+        android:text="Escoja el tiempo"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/txt_time_register"

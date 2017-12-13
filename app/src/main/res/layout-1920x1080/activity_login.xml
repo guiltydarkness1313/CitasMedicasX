@@ -30,15 +30,15 @@
         android:orientation="vertical">
 
         <EditText
-            android:drawablePadding="10dp"
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/et_marco_login"
+            android:drawablePadding="10dp"
             android:drawableStart="@drawable/ic_person_black_24dp"
-            android:hint="@string/user_txt"
+            android:hint="Doc. identidad"
             android:inputType="textEmailAddress"
             android:paddingEnd="5dp"
             android:paddingStart="5dp" />

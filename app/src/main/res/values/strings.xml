@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Citas Médicas</string>
+    <string name="app_name">Medical Manager</string>
     <string name="text_cuenta_google">¿Tiene una cuenta de Google?</string>
     <string name="txt_log_in">Iniciar Sesión</string>
     <string name="user_txt">Usuario</string>

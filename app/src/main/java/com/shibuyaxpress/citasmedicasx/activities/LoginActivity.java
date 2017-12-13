@@ -256,6 +256,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     Usuarios.getInstance().setNombre(u.getNombre());
                 } else {
                     Toast.makeText(getApplicationContext(),"error en datos",Toast.LENGTH_SHORT).show();
+                    txtPassword.setError("ingrese un usuario y/o contraseña valido");
                 }
             }
 

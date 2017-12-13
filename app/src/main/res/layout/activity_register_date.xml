@@ -8,6 +8,14 @@
     tools:context="com.shibuyaxpress.citasmedicasx.RegisterDateActivity">
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aokana"
+        android:text="Seleccione su doctor "
+        android:textSize="18sp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/reciclador_doctores"
         android:layout_width="match_parent"

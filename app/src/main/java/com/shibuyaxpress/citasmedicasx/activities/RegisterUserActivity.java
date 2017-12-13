@@ -148,13 +148,13 @@ public class RegisterUserActivity extends AppCompatActivity {
         String fechaNac=inputDate.getText().toString();
         String numDoc=inputNumberDoc.getText().toString();
 
-        if(TextUtils.isEmpty(nombre)||TextUtils.isEmpty(apellidoM)||
-                TextUtils.isEmpty(apellidoP)||TextUtils.isEmpty(ciudad)||
+        if(TextUtils.isEmpty(nombre)||nombre.length()>20||TextUtils.isEmpty(apellidoM)||apellidoM.length()>15||apellidoP.length()>15||
+                TextUtils.isEmpty(apellidoP)||TextUtils.isEmpty(ciudad)||ciudad.length()>15||provincia.length()>15||codPostal.length()>10||
                 TextUtils.isEmpty(provincia)|| TextUtils.isEmpty(codPostal)
                 ||TextUtils.isEmpty(tipoDoc)||TextUtils.isEmpty(genero)||
-                TextUtils.isEmpty(celular)||TextUtils.isEmpty(telefono)
-                ||TextUtils.isEmpty(nacionalidad)||TextUtils.isEmpty(numDoc)
-               ||TextUtils.isEmpty(fechaNac)||TextUtils.isEmpty(correo)
+                TextUtils.isEmpty(celular)||celular.length()>9||TextUtils.isEmpty(telefono)||telefono.length()>7
+                ||TextUtils.isEmpty(nacionalidad)||nacionalidad.length()>20||TextUtils.isEmpty(numDoc)||numDoc.length()>20
+               ||TextUtils.isEmpty(fechaNac)||TextUtils.isEmpty(correo)||!correo.contains("@")
                 ||TextUtils.isEmpty(direccion)){
             Toast.makeText(RegisterUserActivity.this,"Complete campos necesarios",Toast.LENGTH_SHORT).show();
         }else {

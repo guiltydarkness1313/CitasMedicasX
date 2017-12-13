@@ -38,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/et_marco_login"
             android:drawableStart="@drawable/ic_person_black_24dp"
-            android:hint="@string/user_txt"
+            android:hint="Doc. identidad"
             android:inputType="textEmailAddress"
             android:paddingEnd="5dp"
             android:paddingStart="5dp" />

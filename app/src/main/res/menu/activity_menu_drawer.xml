@@ -29,10 +29,10 @@
         </menu>
     </item>
     <group android:id="@+id/group_options">
-        <item
+        <!--<item
             android:id="@+id/nav_settings"
             android:title="@string/settings"
-            android:icon="@drawable/ic_settings"
+            android:icon="@drawable/ic_settings"-->
             />
         <item
             android:id="@+id/nav_logout"
